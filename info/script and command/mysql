@@ -1,0 +1,23 @@
+sudo apt update
+sudo apt install mysql-server
+sudo mysql_secure_installation
+
+mysql -u root -p fede425929
+
+//With this command i can see the table information and properties
+DESCRIBE table_name;
+
+If we have problems after to set security
+we can use this commands to reset database password
+
+sudo mysql -u root
+
+update mysql.user set authentication_string=password(''), plugin='mysql_native_password' where user='root';
+
+password will be strong!
+
+
+
+
+
+

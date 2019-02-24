@@ -1,0 +1,79 @@
+Making a Server
+first 
+npm init --yes
+
+API rest modules
+in the folder of the server
+npm install i express morgan promise-mysql cors
+
+i -> install
+express -> we're gonna use express to create the  server.
+morgan -> para ver las peticiones y lo que ocurre en la consola 
+promise-mysql -> sirve para conectar nodejs con mysql pero esto soporta promesas de javascript, async cabai 
+
+cors -> nos permite comunicar dos servidores
+
+TypeScript easier javascript
+installing ts
+npm install -g typescript
+g -> global we can access after from everywhere, thanks -g :)
+then wecan write on console to test 
+tsc
+--version--
+
+then we can use tsc to create the config json for tsc
+tsc --init
+
+ok with tsc we can translate the js to es6
+we're gonna use es6 becasue is better
+and then we gonna change outDir ./build here we're gonna 
+choose where the code translated from js to tsc will be 
+saved.
+
+every time that i've changed the file i have to execute tsc and then i have to use onli build to use on production
+
+------------
+
+in folder server we're gonna add a new script to make more easy the steps to 
+create tsc...
+we have to put on the part script: build: "tsc -w"
+with the command -w, we are saying to the compilator that it has to continues
+contraling the change and if we have changes on the code do tsc...
+
+and then we have to execute npm run build 
+
+So, with this we aren't gonna need do tsc, but we have to execute with node...
+we can use nodemon, that is a library for debug proccess no for production 
+and for this we're gonna use a -D with this command we are setting that the library it isn't in the production config anyway the command is:
+npm i nodemon -D
+
+with this command the file will be installed on the devdependecies
+
+So now with this changes we're gonna put a new script on the configuration file on the script section, dev: "nodemon build/index.js" So we are using a console 
+to execute and check change on the code: npm run build and other console to 
+run npm run dev and using nodemon.
+
+-------------------------------------------------------
+
+other dependencie that is good to add is types, is a dependencie to help the compilator tsc and help you with the names... the dependencie will be installed on devdependencies to the command: -D the whole code is npm i @types/express -D
+
+Important tools to use on dev
+morgan and cors
+
+npm i @types/morgan @types/cors -D
+
+with this it is easiest control request to the server (morgan) and connect
+servers (cors).
+
+other important configs to accept format from client and sen the same
+
+//we have to add 2 important configs more
+        //first: json from express, with this option the server will be able to accept 
+        // json format from client
+        this.app.use(express.json());
+        //The other option is for HTML format with this option from express
+        this.app.use(express.urlencoded({extended: false}));
+
+---------------------------------------------------------
+
+    
